@@ -25,7 +25,7 @@ cp .env.example .env
 podman-compose up -d --build
 
 # 3. SSH 登录
-ssh -p 57307 alice@localhost   # 密码见 .env 的 USER_PASSWORD，默认 123456
+ssh -p 57307 ubuntu@localhost
 ```
 
 也可以用环境变量代替 `.env`：
