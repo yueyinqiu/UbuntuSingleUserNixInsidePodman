@@ -10,7 +10,6 @@ RUN apt-get install -y openssh-server
 RUN apt-get install -y sudo
 RUN apt-get install -y curl
 RUN apt-get install -y xz-utils
-RUN apt-get install -y git
 
 RUN userdel -r ubuntu
 RUN useradd -m -s /bin/bash "${USER_NAME}"
@@ -21,7 +20,7 @@ RUN mkdir -p /nix && chown -R "${USER_NAME}" /nix
 
 USER ${USER_NAME}
 RUN curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --no-daemon
-RUN sed -i '1i source $HOME/.nix-profile/etc/profile.d/nix.sh' $HOME/.bashrc
+RUN sed -i '1i source "$HOME/.nix-profile/etc/profile.d/nix.sh"' "$HOME/.bashrc"
 USER root
 
 STOPSIGNAL SIGRTMIN+3
