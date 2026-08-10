@@ -1,6 +1,7 @@
 services:
   ubuntu-single-user-nix-inside-podman:
     container_name: ${CONTAINER_NAME:-ubuntu-single-user-nix-inside-podman}
+    hostname: ${HOSTNAME:-ubuntu-single-user-nix-inside-podman}
     build:
       context: .
       args:
