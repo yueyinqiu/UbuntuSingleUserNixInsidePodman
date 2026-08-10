@@ -18,7 +18,11 @@ RUN echo "${USER_NAME}:${USER_PASSWORD}" | chpasswd
 RUN usermod -aG sudo "${USER_NAME}"
 
 RUN mkdir -p /nix && chown -R "${USER_NAME}" /nix
-RUN su - "${USER_NAME}" -c "curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --no-daemon"
+
+USER ${USER_NAME}
+RUN curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --no-daemon
+RUN sed -i '1i source $HOME/.nix-profile/etc/profile.d/nix.sh' $HOME/.bashrc
+USER root
 
 STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init"]
