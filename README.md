@@ -25,7 +25,7 @@ cp .env.example .env
 podman-compose up -d --build
 
 # 3. SSH 登录
-ssh -p 57307 ubuntu@localhost
+ssh -p 57307 ubuntu@127.0.0.1
 ```
 
 ## 配置项

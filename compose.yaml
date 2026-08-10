@@ -9,7 +9,9 @@ services:
     systemd: true
     restart: unless-stopped
     ports:
-      - "${SSH_PORT:-57307}:22"
+      - "127.0.0.1:${SSH_PORT:-57307}:22"
+      # 如果需要监听所有网卡
+      # - "${SSH_PORT:-57307}:22"
     volumes:
       - home:/home
       - nix:/nix
