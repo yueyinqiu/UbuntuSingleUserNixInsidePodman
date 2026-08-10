@@ -18,10 +18,13 @@
 ## 快速开始
 
 ```bash
-# 1. 复制 .env.example 并按需修改
-cp .env.example .env
+# 1. 复制到 local 以按需修改
+cp .env local/.env
+cp Containerfile local/Containerfile
+cp compose.yaml local/compose.yaml
 
 # 2. 构建并启动
+cd local
 podman-compose up -d --build
 
 # 3. SSH 登录
@@ -47,6 +50,7 @@ ssh -p 57307 ubuntu@127.0.0.1
 - 想要完全重建请删除卷后重新 `up`：
 
 ```bash
+cd local
 podman-compose down
 podman volume rm ubuntu-single-user-nix-inside-podman_home ubuntu-single-user-nix-inside-podman_nix
 podman-compose up -d --build
@@ -57,6 +61,7 @@ podman-compose up -d --build
 构建层缓存会让 apt 包停留在首次构建的版本。需要升级时强制重建：
 
 ```bash
+cd local
 podman-compose build --no-cache --pull
 podman-compose up -d --force-recreate
 ```
