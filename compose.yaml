@@ -13,9 +13,8 @@ services:
     systemd: true
     restart: unless-stopped
     ports:
+      # 转发 SSH 服务，如果需要监听所有网卡，使用 "57307:22"
       - "127.0.0.1:57307:22"
-      # 如果需要监听所有网卡
-      # - "57307:22"
     volumes:
       - home:/home
       - nix:/nix
