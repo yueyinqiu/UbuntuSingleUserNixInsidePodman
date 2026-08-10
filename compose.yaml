@@ -1,18 +1,21 @@
+name: ubuntu-single-user-nix-inside-podman
+
 services:
   ubuntu-single-user-nix-inside-podman:
-    container_name: ${CONTAINER_NAME:-ubuntu-single-user-nix-inside-podman}
-    hostname: ${HOSTNAME:-ubuntu-single-user-nix-inside-podman}
+    container_name: ubuntu-single-user-nix-inside-podman
+    hostname: ubuntu-single-user-nix-inside-podman
     build:
       context: .
       args:
-        USER_NAME: ${USER_NAME:-ubuntu}
-        USER_PASSWORD: ${USER_PASSWORD:-123456}
+        # 具有 /nix 权限的用户
+        USER_NAME: ubuntu
+        USER_PASSWORD: 123456
     systemd: true
     restart: unless-stopped
     ports:
-      - "127.0.0.1:${SSH_PORT:-57307}:22"
+      - "127.0.0.1:57307:22"
       # 如果需要监听所有网卡
-      # - "${SSH_PORT:-57307}:22"
+      # - "57307:22"
     volumes:
       - home:/home
       - nix:/nix
