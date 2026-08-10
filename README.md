@@ -48,7 +48,7 @@ ssh -p 57307 ubuntu@localhost
 
 ```bash
 podman-compose down
-podman volume rm ubuntu-single-user-nix-inside-podman_home ubuntu-single-user-nix-inside-podman_nix    # 按实际名字
+podman volume rm ubuntu-single-user-nix-inside-podman_home ubuntu-single-user-nix-inside-podman_nix
 podman-compose up -d --build
 ```
 
