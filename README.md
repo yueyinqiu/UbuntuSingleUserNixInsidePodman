@@ -28,12 +28,6 @@ podman-compose up -d --build
 ssh -p 57307 ubuntu@localhost
 ```
 
-也可以用环境变量代替 `.env`：
-
-```bash
-USER_NAME=alice USER_PASSWORD=123456 podman-compose up -d --build
-```
-
 ## 配置项
 
 | 变量 | 默认值 | 说明 |
