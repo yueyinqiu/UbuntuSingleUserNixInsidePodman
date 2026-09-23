@@ -11,6 +11,7 @@ services:
         USER_NAME: ubuntu
         USER_PASSWORD: 123456
     systemd: true
+    pids_limit: 131072
     restart: unless-stopped
     ports:
       # 转发 SSH 服务，如果需要监听所有网卡，使用 "57307:22"
