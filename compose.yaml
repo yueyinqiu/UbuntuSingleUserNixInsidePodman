@@ -16,6 +16,10 @@ services:
     ports:
       # 转发 SSH 服务，如果需要监听所有网卡，使用 "57307:22"
       - "127.0.0.1:57307:22"
+    devices:
+      - "/dev/kvm:/dev/kvm"
+    group_add:
+      - keep-groups
     volumes:
       - home:/home
       - nix:/nix

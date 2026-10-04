@@ -8,6 +8,7 @@
 - 单用户模式安装 Nix
 - 默认开启 SSH
 - 家目录（`/home`）和 Nix store（`/nix`）使用命名卷持久化
+- 支持 KVM（rootless podman 下通过 `keep-groups` 自动继承宿主机的 `kvm` 组）
 
 ## 前提
 
